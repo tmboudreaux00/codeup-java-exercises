@@ -44,22 +44,21 @@ public class ControlFlowExercises {
 //            }
 //        }
 
-//        System.out.print("Enter a number: ");
-//        int userInt = scanner.nextInt();
-//        System.out.println("\n\nHere is your table!\n\nnumber | squared | cubed\n------ | ------- | -----");
-//        int i;
-//        int j;
-//        int k;
-//
-//        for (i = 1; i <= userInt; i++) {
-//            j = i * i;
-//            k = j * i;
-//            if (j < 10) {
-//                System.out.printf("%s      | %s       | %s\n", i, j, k);
-//            } else {
-//                System.out.printf("%s      | %s      | %s\n", i, j, k);
-//           }
-//        }
+        System.out.print("Enter a number: ");
+        int userInt = scanner.nextInt();
+        System.out.println("\n\nHere is your table!\n\nnumber | squared | cubed\n------ | ------- | -----");
+        int i;
+        int j;
+        int k;
+        for (i = 1; i <= userInt; i++) {
+            j = i * i;
+            k = j * i;
+            if (j < 10) {
+                System.out.printf("%s      | %s       | %s\n", i, j, k);
+            } else {
+                System.out.printf("%s      | %s      | %s\n", i, j, k);
+           }
+        }
         System.out.print("Do you want to continue? [y/N]");
         String confirm = scanner.next();
         boolean confirmation = confirm.equals("y");
