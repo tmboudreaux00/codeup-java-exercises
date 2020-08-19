@@ -2,37 +2,39 @@
 public class Person {
     private String name = "John Doe";
 
-
     public String getName() {
 //TODO: return the person's name
         return name;
     }
 
-    public class setName(String name) {
+    public void setName(String name) {
 //TODO: change the name property to the passed value
-        this.name = name;
-    }
-
-    public Person(String name) {
         this.name = name;
     }
 
     public void sayHello() {
 //TODO: print a message to the console using the person's name
-        System.out.printf("Howdy, %s", getName());
+        if (name.toLowerCase() == "larry") {
+            System.out.println("Ooo, a wise guy, eh?");
+        }
+        else if (name.toLowerCase() == "curly"){
+            System.out.println("nyuk nyuk nyuk");
+        }
+        else if (name.toLowerCase() == "moe"){
+            System.out.println("What's the matter with you?");
+        }
+        else if (name.toLowerCase() == "shemp"){
+            System.out.println("eeeb! eeeb! eeeb! eeeb!");
+        } else {
+            System.out.println("We're gettin' no place fast! Try again.");
+        }
     }
 
     public static void main(String[] args) {
-        Person cletus = new Person("Cletus\n");
+        Person cletus = new Person();
+        cletus.setName("Cletus");
         cletus.sayHello();
-//        Person person1 = new Person("John");
-//        Person person2 = new Person("Jane");
-//        System.out.println(person1.getName().equals(person2.getName()));
-//        System.out.println(person1 == person2);
-
     }
-
-
 }
 
 
