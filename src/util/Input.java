@@ -1,50 +1,67 @@
 package util;
-
 import java.util.Scanner;
 
 public class Input {
-    private Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
 
-    public String getString() {
-        boolean userInput = false;
+    String getString(){
         System.out.print("Enter a string: ");
-        String getNextString = scanner.nextLine();
-        return getNextString;
+        String string = scanner.next();
+        System.out.println(string);
+        return string;
     }
-
-    public boolean yesNo() {
-        System.out.print("[y/N]");
-        String userInput = scanner.nextLine().toLowerCase();
-
-        return userInput.equals("yes") || userInput.equals("y");
+    boolean yesNo(){
+        System.out.print("Enter a boolean: [yes/no] ");
+        String response = scanner.next().toLowerCase();
+        boolean yesNo;
+        if (response.equals("yes")){
+            System.out.println("\nResponse is " + response);
+            yesNo = true;
+        } else if (response.equals("no")) {
+            System.out.println("\nResponse is " + response);
+            yesNo = false;
+        } else {
+            System.out.println("\nInvalid response");
+            yesNo = false;
+        }
+        return yesNo;
     }
-
-    public int getInt (int min, int max){
-        boolean waitingInt = true;
-        int num = 0;
+    int getInt(int min, int max){
+        boolean flag = false;
+        int num;
         do {
-            System.out.printf("Enter a number from %d and %d:\n", min, max);
-            String userInput = scanner.nextLine();
-            num = Integer.parseInt(userInput);
+            System.out.print("Enter an int between 1 and 100: ");
+            num = scanner.nextInt();
             if (num >= min && num <= max) {
-                waitingInt = false;
+                flag = true;
+            } else {
+                System.out.println("int out of range.");
             }
-        } while (waitingInt);
+        } while(!flag);
         return num;
     }
-
-    public double getDouble (double min, double max){
-        boolean waitingDouble = true;
-        double numDouble = 0;
-        do {
-            System.out.printf("Enter a number from %.2f and %.2f:\n", min, max);
-            String userInput = scanner.nextLine();
-            numDouble = Double.parseDouble(userInput);
-            if (numDouble >= min && numDouble <= max){
-                waitingDouble = false;
-            }
-        } while (waitingDouble);
-        return numDouble;
+    int getInt(){
+        System.out.print("Enter another int: ");
+        int num = scanner.nextInt();
+        return num;
     }
-
+    double getDouble(double min, double max){
+        boolean flag = false;
+        double dubNum;
+        do {
+            System.out.print("Enter a double between 1.00 and 100.00: ");
+            dubNum = scanner.nextDouble();
+            if (dubNum >= min && dubNum <= max) {
+                flag = true;
+            } else {
+                System.out.println("double out of range.");
+            }
+        } while (!flag);
+        return dubNum;
+    }
+    double getDouble(){
+        System.out.println("Enter a double: ");
+        double dubNum = scanner.nextDouble();
+        return dubNum;
+    }
 }
