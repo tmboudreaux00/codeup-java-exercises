@@ -2,36 +2,39 @@ package util;
 import java.util.Scanner;
 
 public class Input {
-    Scanner scanner = new Scanner(System.in);
+    final private Scanner scanner;
 
-    String getString(){
-        System.out.print("Enter a string: ");
-        String string = scanner.next();
-        System.out.println(string);
-        return string;
+    public Input() {
+        this.scanner = new Scanner(System.in);
     }
-    boolean yesNo(){
-        System.out.print("Enter a boolean: [yes/no] ");
-        String response = scanner.next().toLowerCase();
-        boolean yesNo;
+
+    public void clear() {
+        this.scanner.nextLine();
+    }
+
+    public String getString(){
+        return this.scanner.nextLine();
+    }
+    public boolean yesNo(){
+        System.out.print("\nDo you want to continue?: [yes/no] ");
+        String response = getString();
+        response = response.toLowerCase();
         if (response.equals("yes")){
-            System.out.println("\nResponse is " + response);
-            yesNo = true;
+            return true;
         } else if (response.equals("no")) {
-            System.out.println("\nResponse is " + response);
-            yesNo = false;
+            System.out.println("\nProgram ended.");
+            return false;
         } else {
             System.out.println("\nInvalid response");
-            yesNo = false;
+            return yesNo();
         }
-        return yesNo;
     }
     int getInt(int min, int max){
         boolean flag = false;
         int num;
         do {
-            System.out.print("Enter an int between 1 and 100: ");
-            num = scanner.nextInt();
+            System.out.printf("Enter an int between %s and %s: ", min, max);
+            num = this.scanner.nextInt();
             if (num >= min && num <= max) {
                 flag = true;
             } else {
@@ -42,15 +45,16 @@ public class Input {
     }
     int getInt(){
         System.out.print("Enter another int: ");
-        int num = scanner.nextInt();
+        int num = this.scanner.nextInt();
         return num;
     }
+
     double getDouble(double min, double max){
         boolean flag = false;
         double dubNum;
         do {
-            System.out.print("Enter a double between 1.00 and 100.00: ");
-            dubNum = scanner.nextDouble();
+            System.out.printf("Enter a double between %s and %s: ", min, max);
+            dubNum = this.scanner.nextDouble();
             if (dubNum >= min && dubNum <= max) {
                 flag = true;
             } else {
@@ -59,9 +63,8 @@ public class Input {
         } while (!flag);
         return dubNum;
     }
-    double getDouble(){
-        System.out.println("Enter a double: ");
-        double dubNum = scanner.nextDouble();
-        return dubNum;
+    public double getDouble(){
+        System.out.println("Enter the radius: ");
+        return this.scanner.nextDouble();
     }
 }

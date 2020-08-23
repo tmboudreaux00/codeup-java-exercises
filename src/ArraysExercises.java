@@ -1,47 +1,28 @@
 import java.util.Arrays;
 
-public class ArraysExercises {
-    public static void main(String[] args){
-//        int[] numbers = {1, 2, 3, 4, 5};
-//        String numToString = Arrays.toString(numbers); //must convert toString to view array contents
-//        System.out.println(numToString);
-//
-//        int[] numCopy = Arrays.copyOf(numbers, 10);
-//        String numCopyToString = Arrays.toString(numCopy);
-//        System.out.println(numCopyToString);
-        String[][] Stooges = {
-                {""},
-                {""},
-                {""}
-        };
-        String[] StoogePool = {"Larry", "Curly", "Moe", "Shemp"};
-        for (int i = 0; i < Stooges.length; i++){
-            if (Stooges[0] == ""){
-                Person larry = new Person();
-                larry.setName("Larry");
-                larry.sayHello();
-                Stooges[0] = null;
+public class ArraysExercises{
 
-            } else if (Stooges[1] == "") {
-                Person curly = new Person();
-                curly.setName("Curly");
-                curly.sayHello();
-            } else if (Stooges[2] == "") {
-                for (int j = 0; j < Stooges[i].length; j++) {
-                    if (Stooges[2][0] == "") {
-                        Person moe = new Person();
-                        moe.setName("Moe");
-                        moe.sayHello();
-                    } else if (Stooges[2][1] == "") {
-                        Person shemp = new Person();
-                        shemp.setName("Shemp");
-                        shemp.sayHello();
-                    }
-                }
+    public static void main(String[] args) {
+        Person[] stooges = new Person[3];
+        stooges[0] = new Person("Larry");
+        stooges[1] = new Person("Curly");
+        stooges[2] = new Person("Moe");
 
-            }
+        for(Person thisPerson: stooges) {
+            System.out.println(thisPerson.sayHello());
         }
-//        String StoogesString = Arrays.toString(stooge);
-//        System.out.println(StoogesString);
+
+        Person shemp = new Person("Shemp");
+        Person[] updatedStooges = new Person[stooges.length + 1];
+        updatedStooges = addPerson(stooges, shemp);
+
+        for(Person thisPerson : updatedStooges){
+            System.out.println(thisPerson.getName());
+        }
+    }
+    public static Person[] addPerson(Person[] existingPeople, Person newPeep){
+        Person[] updatedPeeps = Arrays.copyOf(existingPeople, existingPeople.length + 1);
+        updatedPeeps[existingPeople.length] = newPeep;
+        return updatedPeeps;
     }
 }
